@@ -4,10 +4,13 @@ using System;
 
 namespace FAQwebApp.Data.Migrations
 {
+    // Migracja odpowiedzialna za utworzenie schematu Identity w bazie danych
     public partial class CreateIdentitySchema : Migration
     {
+        // Metoda odpowiedzialna za wersję migracji
         protected override void Up(MigrationBuilder migrationBuilder)
         {
+            // Tworzenie tabeli roli użytkowników
             migrationBuilder.CreateTable(
                 name: "AspNetRoles",
                 columns: table => new
@@ -22,6 +25,7 @@ namespace FAQwebApp.Data.Migrations
                     table.PrimaryKey("PK_AspNetRoles", x => x.Id);
                 });
 
+            // Tworzenie tabeli użytkowników
             migrationBuilder.CreateTable(
                 name: "AspNetUsers",
                 columns: table => new
@@ -47,6 +51,7 @@ namespace FAQwebApp.Data.Migrations
                     table.PrimaryKey("PK_AspNetUsers", x => x.Id);
                 });
 
+            // Tworzenie tabeli z roszczeniami ról użytkowników
             migrationBuilder.CreateTable(
                 name: "AspNetRoleClaims",
                 columns: table => new
@@ -68,6 +73,7 @@ namespace FAQwebApp.Data.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            // Tworzenie tabeli z roszczeniami użytkowników
             migrationBuilder.CreateTable(
                 name: "AspNetUserClaims",
                 columns: table => new
@@ -89,6 +95,7 @@ namespace FAQwebApp.Data.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            // Tworzenie tabeli z danymi logowania użytkowników
             migrationBuilder.CreateTable(
                 name: "AspNetUserLogins",
                 columns: table => new
@@ -109,6 +116,7 @@ namespace FAQwebApp.Data.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            // Tworzenie tabeli z przypisaniem ról do użytkowników
             migrationBuilder.CreateTable(
                 name: "AspNetUserRoles",
                 columns: table => new
@@ -133,6 +141,7 @@ namespace FAQwebApp.Data.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            // Tworzenie tabeli z tokenami użytkowników
             migrationBuilder.CreateTable(
                 name: "AspNetUserTokens",
                 columns: table => new
@@ -153,11 +162,13 @@ namespace FAQwebApp.Data.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            // Indeks dla roszczeń ról użytkowników
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",
                 table: "AspNetRoleClaims",
                 column: "RoleId");
 
+            // Unikalny indeks dla nazw ról użytkowników
             migrationBuilder.CreateIndex(
                 name: "RoleNameIndex",
                 table: "AspNetRoles",
@@ -165,26 +176,31 @@ namespace FAQwebApp.Data.Migrations
                 unique: true,
                 filter: "[NormalizedName] IS NOT NULL");
 
+            // Indeks dla roszczeń użytkowników
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetUserClaims_UserId",
                 table: "AspNetUserClaims",
                 column: "UserId");
 
+            // Indeks dla logowań użytkowników
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetUserLogins_UserId",
                 table: "AspNetUserLogins",
                 column: "UserId");
 
+            // Indeks dla przypisania ról do użytkowników
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetUserRoles_RoleId",
                 table: "AspNetUserRoles",
                 column: "RoleId");
 
+            // Indeks dla adresów email użytkowników
             migrationBuilder.CreateIndex(
                 name: "EmailIndex",
                 table: "AspNetUsers",
                 column: "NormalizedEmail");
 
+            // Unikalny indeks dla nazw użytkowników
             migrationBuilder.CreateIndex(
                 name: "UserNameIndex",
                 table: "AspNetUsers",
@@ -193,26 +209,34 @@ namespace FAQwebApp.Data.Migrations
                 filter: "[NormalizedUserName] IS NOT NULL");
         }
 
+        // Metoda odpowiedzialna za cofnięcie migracji
         protected override void Down(MigrationBuilder migrationBuilder)
         {
+            // Usunięcie tabeli z roszczeniami ról użytkowników
             migrationBuilder.DropTable(
                 name: "AspNetRoleClaims");
 
+            // Usunięcie tabeli z roszczeniami użytkowników
             migrationBuilder.DropTable(
                 name: "AspNetUserClaims");
 
+            // Usunięcie tabeli z danymi logowania użytkowników
             migrationBuilder.DropTable(
                 name: "AspNetUserLogins");
 
+            // Usunięcie tabeli z przypisaniem ról do użytkowników
             migrationBuilder.DropTable(
                 name: "AspNetUserRoles");
 
+            // Usunięcie tabeli z tokenami użytkowników
             migrationBuilder.DropTable(
                 name: "AspNetUserTokens");
 
+            // Usunięcie tabeli z rolami użytkowników
             migrationBuilder.DropTable(
                 name: "AspNetRoles");
 
+            // Usunięcie tabeli z danymi użytkowników
             migrationBuilder.DropTable(
                 name: "AspNetUsers");
         }
