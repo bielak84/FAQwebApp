@@ -1,23 +1,31 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- Ustawienia kodowania znaków i skalowania widoku -->
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Tytuł strony z dynamicznym dodaniem danych -->
     <title>@ViewData["Title"] - FAQwebApp</title>
+    <!-- Dołączenie arkuszy stylów Bootstrap i lokalnych styli -->
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/FAQwebApp.styles.css" asp-append-version="true" />
 </head>
 <body>
+    <!-- Nagłówek strony zawierający nawigację -->
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container-fluid">
+                <!-- Link do strony głównej aplikacji -->
                 <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">FAQwebApp</a>
+                <!-- Przycisk do rozwijania menu nawigacyjnego na urządzeniach mobilnych -->
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
+                <!-- Menu nawigacyjne -->
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                    <!-- Lista linków do różnych sekcji aplikacji -->
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
@@ -25,26 +33,34 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="FAQs" asp-action="Index">FAQ</a>
+                        </li>
                     </ul>
+                    <!-- Część logowania użytkownika -->
                     <partial name="_LoginPartial" />
                 </div>
             </div>
         </nav>
     </header>
+    <!-- Główna treść strony w kontenerze -->
     <div class="container">
         <main role="main" class="pb-3">
             @RenderBody()
         </main>
     </div>
 
+    <!-- Stopka strony z informacją o prawach autorskich i linkiem do polityki prywatności -->
     <footer class="border-top footer text-muted">
         <div class="container">
             &copy; 2024 - FAQwebApp - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
         </div>
     </footer>
+    <!-- Dołączenie skryptów jQuery, Bootstrap i lokalnego skryptu -->
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
+    <!-- Wstawienie sekcji skryptów, jeśli istnieją -->
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>
