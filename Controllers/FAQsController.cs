@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using FAQwebApp.Data;
 using FAQwebApp.Models;
 using System.Text.Json.Nodes;
+using Microsoft.AspNetCore.Authorization;
 
 namespace FAQwebApp.Controllers
 {
@@ -45,6 +46,7 @@ namespace FAQwebApp.Controllers
 
         // GET: FAQs/Details/5
         // Akcja zwracająca widok z danymi szczegółowymi dla konkretnego FAQ
+        [Authorize]
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -66,6 +68,7 @@ namespace FAQwebApp.Controllers
 
         // GET: FAQs/Create
         // Akcja zwracająca widok do tworzenia nowego FAQ
+        [Authorize]
         public IActionResult Create()
         {
             return View();
@@ -96,6 +99,7 @@ namespace FAQwebApp.Controllers
 
         // GET: FAQs/Edit/5
         // Akcja zwracająca widok do edycji konkretnego FAQ
+        [Authorize]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -115,6 +119,7 @@ namespace FAQwebApp.Controllers
 
         // POST: FAQs/Edit/5
         // Akcja obsługująca edycję konkretnego FAQ w bazie danych
+        [Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("id,Question,Answer")] FAQ fAQ)
@@ -159,6 +164,7 @@ namespace FAQwebApp.Controllers
 
         // GET: FAQs/Delete/5
         // Akcja zwracająca widok do potwierdzenia usunięcia konkretnego FAQ
+        [Authorize]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -180,6 +186,7 @@ namespace FAQwebApp.Controllers
 
         // POST: FAQs/Delete/5
         // Akcja obsługująca potwierdzenie usunięcia konkretnego FAQ z bazy danych
+        [Authorize]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
