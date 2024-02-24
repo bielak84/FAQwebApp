@@ -4,52 +4,52 @@ using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Dodawanie us³ug do kontenera us³ug (dependency injection).
+// Dodawanie usï¿½ug do kontenera usï¿½ug (dependency injection).
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection") ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(connectionString));
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
-// Dodawanie obs³ugi uwierzytelniania i autoryzacji
+// Dodawanie obsï¿½ugi uwierzytelniania i autoryzacji
 builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
     .AddEntityFrameworkStores<ApplicationDbContext>();
 
-// Dodawanie obs³ugi kontrolerów i widoków
+// Dodawanie obsï¿½ugi kontrolerï¿½w i widokï¿½w
 builder.Services.AddControllersWithViews();
 
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
-// Konfiguracja potoku przetwarzania ¿¹dañ HTTP
+// Konfiguracja potoku przetwarzania ï¿½ï¿½daï¿½ HTTP
 if (app.Environment.IsDevelopment())
 {
-    app.UseMigrationsEndPoint(); // Dodawanie obs³ugi koñcowej migracji bazy danych w trybie deweloperskim
+    app.UseMigrationsEndPoint(); // Dodawanie obsï¿½ugi koï¿½cowej migracji bazy danych w trybie deweloperskim
 }
 else
 {
-    app.UseExceptionHandler("/Home/Error"); // Obs³uga b³êdów w przypadku produkcji
-    // Domyœlna wartoœæ HSTS wynosi 30 dni. Mo¿esz chcieæ zmieniæ to dla scenariuszy produkcyjnych, zobacz https://aka.ms/aspnetcore-hsts.
-    app.UseHsts(); // Dodawanie obs³ugi HSTS (HTTP Strict Transport Security)
+    app.UseExceptionHandler("/Home/Error"); // Obsï¿½uga bï¿½ï¿½dï¿½w w przypadku produkcji
+    // Domyï¿½lna wartoï¿½ï¿½ HSTS wynosi 30 dni. Moï¿½esz chcieï¿½ zmieniï¿½ to dla scenariuszy produkcyjnych, zobacz https://aka.ms/aspnetcore-hsts.
+    app.UseHsts(); // Dodawanie obsï¿½ugi HSTS (HTTP Strict Transport Security)
 }
 
-app.UseHttpsRedirection(); // Przekierowanie ¿¹dañ HTTP na HTTPS
-app.UseStaticFiles(); // Dodawanie obs³ugi plików statycznych (np. CSS, obrazy)
+app.UseHttpsRedirection(); // Przekierowanie ï¿½ï¿½daï¿½ HTTP na HTTPS
+app.UseStaticFiles(); // Dodawanie obsï¿½ugi plikï¿½w statycznych (np. CSS, obrazy)
 
-app.UseRouting(); // Dodawanie obs³ugi trasowania
+app.UseRouting(); // Dodawanie obsï¿½ugi trasowania
 
-app.UseAuthorization(); // Dodawanie obs³ugi autoryzacji
+app.UseAuthorization(); // Dodawanie obsï¿½ugi autoryzacji
 
-// Dodawanie trasowania dla akcji w kontrolerze FAQsRandom odpowiadaj¹cej za losowe pytanie
+// Dodawanie trasowania dla akcji w kontrolerze FAQsRandom odpowiadajï¿½cej za losowe pytanie
 app.MapControllerRoute(
     name: "FAQsRandom",
     pattern: "FAQs/RandomQuestion",
     defaults: new { controller = "FAQsRandom", action = "RandomQuestion" });
 
-// Domyœlne trasowanie dla kontrolerów i akcji
+// Domyï¿½lne trasowanie dla kontrolerï¿½w i akcji
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
 
-app.MapRazorPages(); // Dodawanie obs³ugi stron Razor Pages
+app.MapRazorPages(); // Dodawanie obsï¿½ugi stron Razor Pages
 
 app.Run(); // Uruchomienie aplikacji

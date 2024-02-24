@@ -1,0 +1,65 @@
+﻿@page
+@model LoginModel
+
+@{
+    ViewData["Title"] = "Zaloguj się";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<ul class="nav nav-pills nav-justified mb-3" id="ex1" role="tablist">
+
+    <li class="nav-item" role="presentation">
+    <a class="nav-link" id="tab-register" href="https://localhost:7287/Identity/Account/Login" role="tab"
+       aria-controls="pills-register" aria-selected="false">Logowanie</a>
+</li>
+
+<li class="nav-item" role="presentation">
+    <a class="nav-link" id="tab-register" href="https://localhost:7287/Identity/Account/Register" role="tab"
+       aria-controls="pills-register" aria-selected="false">Rejestracja</a>
+</li>
+
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade show active" id="pills-login" role="tabpanel" aria-labelledby="tab-login">
+        <form method="post">
+
+            <p class="text-center">lub:</p>
+
+            <!-- Pole na email -->
+            <div class="form-outline mb-4">
+                <input asp-for="Input.Email" class="form-control" />
+                <label class="form-label" for="loginName">Email</label>
+                <span asp-validation-for="Input.Email" class="text-danger"></span>
+            </div>
+
+            <!-- Pole na hasło -->
+            <div class="form-outline mb-4">
+                <input asp-for="Input.Password" class="form-control" />
+                <label class="form-label" for="loginPassword">Hasło</label>
+                <span asp-validation-for="Input.Password" class="text-danger"></span>
+            </div>
+
+            <!-- Checkbox -->
+            <div class="form-check mb-3 mb-md-0">
+                <input class="form-check-input" asp-for="Input.RememberMe" />
+                <label class="form-check-label" asp-for="Input.RememberMe"> Zapamiętaj mnie </label>
+            </div>
+
+            <!-- Przycisk zaloguj -->
+            <button type="submit" class="btn btn-primary btn-block mb-4">Zaloguj się</button>
+
+            <!-- Link do zapomnianego hasła -->
+            <div class="text-center">
+                <a asp-page="./ForgotPassword">Zapomniałeś hasła?</a>
+            </div>
+        </form>
+    </div>
+
+
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
