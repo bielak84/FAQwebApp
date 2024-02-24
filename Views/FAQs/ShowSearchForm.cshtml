@@ -1,23 +1,16 @@
-﻿@model FAQwebApp.Models.FAQ
-
-<h4>FAQ</h4>
+﻿<h4>SearchFAQ</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="ShowSearchForm">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <form asp-action="ShowSearchResults">
+
+            
             <div class="form-group">
-                <label asp-for="Question" class="control-label"></label>
-                <input asp-for="Question" class="form-control" />
-                <span asp-validation-for="Question" class="text-danger"></span>
+                <label for="SearchPhrase" class="control-label"></label>
+                <input name="SearchPhrase" class="form-control" />
             </div>
             <div class="form-group">
-                <label asp-for="Answer" class="control-label"></label>
-                <input asp-for="Answer" class="form-control" />
-                <span asp-validation-for="Answer" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
+                <input type="submit" value="SearchForm" class="btn btn-primary" />
             </div>
         </form>
     </div>
@@ -27,6 +20,4 @@
     <a asp-action="Index">Back to List</a>
 </div>
 
-@section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-}
+
