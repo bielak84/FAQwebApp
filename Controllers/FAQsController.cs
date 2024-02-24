@@ -32,7 +32,7 @@ namespace FAQwebApp.Controllers
         
         public async Task<IActionResult> ShowSearchForm()
         {
-            return View(await _context.FAQ.ToListAsync());
+            return View();
         }
 
         // GET: FAQs/Details/5
