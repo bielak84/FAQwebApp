@@ -36,8 +36,14 @@ app.UseRouting();
 app.UseAuthorization();
 
 app.MapControllerRoute(
+    name: "FAQsRandom",
+    pattern: "FAQs/RandomQuestion",
+    defaults: new { controller = "FAQsRandom", action = "RandomQuestion" });
+
+app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
+
 app.MapRazorPages();
 
 app.Run();

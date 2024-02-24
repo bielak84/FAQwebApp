@@ -1,6 +1,6 @@
 ﻿@{
     ViewData["Title"] = "Najczęściej zadawane pytania";
-}
+} 
 <!DOCTYPE html>
 <html lang="pl">
 <head>
@@ -22,10 +22,10 @@
             border-radius: 0;
         }
 
-            .jumbotron h1,
-            .jumbotron p {
-                text-align: center;
-            }
+        .jumbotron h1,
+        .jumbotron p {
+            text-align: center;
+        }
 
         .faq-item {
             background-color: #fff;
@@ -35,51 +35,58 @@
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
 
-            .faq-item h2 {
-                color: #007bff;
-            }
+        .faq-item h2 {
+            color: #007bff;
+        }
     </style>
 </head>
 <body>
-    <div class="container">
-        <div class="jumbotron">
-            <h1 class="display-4">Najczęściej Zadawane Pytania</h1>
-        </div>
-        <div class="row">
-            <div class="col-md-6">
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="faq-item">
-                            <a href="https://localhost:7287/FAQs"><h2>FAQ</h2></a>
-                            <p>Tutaj znajdziesz odpowiedzi na nurtujące cię pytania.</p>
-                        </div>
-                    </div>
-                    <div class="col-md-12">
-                        <div class="faq-item">
-                            <a href="https://localhost:7287/FAQs/ShowSearchForm"><h2>Szukaj</h2></a>
-                            <p>Powiedz nam czego szukasz</p>
-                        </div>
+   <div class="container">
+    <div class="jumbotron">
+        <h1 class="display-4">Najczęściej Zadawane Pytania</h1>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="faq-item">
+                        <a href="https://localhost:7287/FAQs"><h2>FAQ</h2></a>
+                        <p>Tutaj znajdziesz odpowiedzi na nurtujące cię pytania.</p>
                     </div>
                 </div>
-            </div>
-            <div class="col-md-6">
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="faq-item">
-                            <a href="https://localhost:7287/Home/Privacy"><h2>Prywatność</h2></a>
-                            <p>Polityka prywatności</p>
-                        </div>
-                    </div>
-                    <div class="col-md-12">
-                        <div class="faq-item">
-                            <h2><a href="@Url.Action("RandomQuestion", "FAQs")">Losowe pytanie</a></h2>
-                            <p>Good luck!</p>
-                        </div>
+                <div class="col-md-12">
+                    <div class="faq-item">
+                        <a href="https://localhost:7287/FAQs/ShowSearchForm"><h2>Szukaj</h2></a>
+                        <p>Powiedz nam czego szukasz</p>
                     </div>
                 </div>
             </div>
         </div>
+        <div class="col-md-6">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="faq-item">
+                        <a href="https://localhost:7287/Home/Privacy"><h2>Prywatność</h2></a>
+                        <p>Polityka prywatności</p>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="faq-item">
+                        <h2><a href="@Url.Action("RandomQuestion", "FAQs")">Losowe pytanie</a></h2>
+                        <p>Good luck!</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
+
+
+
+
+
+
+
 
 
