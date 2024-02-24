@@ -3,54 +3,54 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - FAQwebApp</title>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/FAQwebApp.styles.css" asp-append-version="true" />
+    <title>@ViewData["Title"] - FAQwebApp</title> <!-- Tytuł strony, pobierany dynamicznie z ViewData -->
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" /> <!-- Ładowanie stylów Bootstrap -->
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" /> <!-- Ładowanie dodatkowych stylów CSS -->
+    <link rel="stylesheet" href="~/FAQwebApp.styles.css" asp-append-version="true" /> <!-- Ładowanie stylów specyficznych dla FAQwebApp -->
 </head>
 <body>
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">FAQwebApp</a>
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Najczęściej Zadawane Pytania</a> <!-- Nagłówek z linkiem do strony głównej -->
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
+                    <span class="navbar-toggler-icon"></span> <!-- Ikona przycisku rozsuwającego menu -->
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Strona główna</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Strona główna</a> <!-- Link do strony głównej -->
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Prywatność</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="FAQs" asp-action="Index">FAQ</a> <!-- Link do sekcji FAQ -->
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="FAQs" asp-action="Index">FAQ</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="FAQs" asp-action="ShowSearchForm">Szukaj</a> <!-- Link do formularza wyszukiwania -->
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="FAQs" asp-action="ShowSearchForm">Szukaj</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Prywatność</a> <!-- Link do polityki prywatności -->
                         </li>
                     </ul>
-                    <partial name="_LoginPartial" />
+                    <partial name="_LoginPartial" /> <!-- Częściowy widok dla sekcji logowania użytkownika -->
                 </div>
             </div>
         </nav>
     </header>
     <div class="container">
         <main role="main" class="pb-3">
-            @RenderBody()
+            @RenderBody() <!-- Główna treść strony, renderowana dynamicznie -->
         </main>
     </div>
 
     <footer class="border-top footer text-muted">
         <div class="container">
-            &copy; 2024 - FAQwebApp - <a asp-area="" asp-controller="Home" asp-action="Privacy">Prywatność</a>
+            &copy; 2024 - Najczęściej Zadawane Pytania - <a asp-area="" asp-controller="Home" asp-action="Privacy">Prywatność</a> <!-- Stopka strony z informacją o roku, nazwie i linkiem do polityki prywatności -->
         </div>
     </footer>
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
-    @await RenderSectionAsync("Scripts", required: false)
+    <script src="~/lib/jquery/dist/jquery.min.js"></script> <!-- Ładowanie skryptu jQuery -->
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script> <!-- Ładowanie skryptu Bootstrap -->
+    <script src="~/js/site.js" asp-append-version="true"></script> <!-- Ładowanie dodatkowych skryptów JavaScript -->
+    @await RenderSectionAsync("Scripts", required: false) <!-- Renderowanie sekcji ze skryptami -->
 </body>
 </html>
