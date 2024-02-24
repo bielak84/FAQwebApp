@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using FAQwebApp.Data;
 using FAQwebApp.Models;
+using System.Text.Json.Nodes;
 
 namespace FAQwebApp.Controllers
 {
@@ -33,6 +34,13 @@ namespace FAQwebApp.Controllers
         public async Task<IActionResult> ShowSearchForm()
         {
             return View();
+        }
+
+        // GET: FAQs/ShowSearchResults
+
+        public async Task<IActionResult> ShowSearchResults(string SearchPhrase)
+        {
+            return View("Index", await _context.FAQ.Where( j => j.Question.Contains(SearchPhrase)).ToListAsync());  
         }
 
         // GET: FAQs/Details/5
