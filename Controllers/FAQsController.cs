@@ -1,4 +1,4 @@
-﻿ using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -31,17 +31,17 @@ namespace FAQwebApp.Controllers
         }
 
         // GET: FAQs/ShowSearchForm
-        
+        // Akcja zwracająca widok do wyświetlenia formularza wyszukiwania
         public async Task<IActionResult> ShowSearchForm()
         {
             return View();
         }
 
         // GET: FAQs/ShowSearchResults
-
+        // Akcja zwracająca widok z wynikami wyszukiwania
         public async Task<IActionResult> ShowSearchResults(string SearchPhrase)
         {
-            return View("Index", await _context.FAQ.Where( j => j.Question.Contains(SearchPhrase)).ToListAsync());  
+            return View("Index", await _context.FAQ.Where(j => j.Question.Contains(SearchPhrase)).ToListAsync());
         }
 
         // GET: FAQs/Details/5
@@ -114,6 +114,7 @@ namespace FAQwebApp.Controllers
             {
                 return NotFound();
             }
+
             return View(fAQ);
         }
 
