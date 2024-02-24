@@ -28,6 +28,20 @@ namespace FAQwebApp.Controllers
             return View(await _context.FAQ.ToListAsync());
         }
 
+        // GET: FAQs/ShowSearchForm
+        
+        public async Task<IActionResult> ShowSearchForm()
+        {
+            return View();
+        }
+
+        // GET: FAQs/ShowSearchResult 
+
+        public async Task<IActionResult> ShowSearchForm(String SearchPhrase)
+        {
+            return View("Index", await _context.FAQ.Where(j => j.Question.Contains(SearchPhrase)).ToListAsync());
+        }
+
         // GET: FAQs/Details/5
         // Akcja zwracająca widok z danymi szczegółowymi dla konkretnego FAQ
         public async Task<IActionResult> Details(int? id)
