@@ -1,4 +1,4 @@
-﻿using System;
+﻿ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -24,6 +24,13 @@ namespace FAQwebApp.Controllers
         // GET: FAQs
         // Akcja zwracająca widok zawierający listę wszystkich FAQ
         public async Task<IActionResult> Index()
+        {
+            return View(await _context.FAQ.ToListAsync());
+        }
+
+        // GET: FAQs/ShowSearchForm
+        
+        public async Task<IActionResult> ShowSearchForm()
         {
             return View(await _context.FAQ.ToListAsync());
         }
