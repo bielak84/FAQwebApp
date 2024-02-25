@@ -1,0 +1,40 @@
+﻿@model List<FAQ>
+
+@{
+    ViewData["Title"] = "Search Results";
+}
+
+<h2>Search Results</h2>
+
+@if (Model != null && Model.Any())
+{
+        <table>
+            <thead>
+                <tr>
+                    <th>Question</th>
+                    <th>Answer</th>
+                </tr>
+            </thead>
+            <tbody>
+            @foreach (var faq in Model)
+            {
+                        <tr>
+                            <td>@faq.Question</td>
+                            <td>@faq.Answer</td>
+                        </tr>
+            }
+            </tbody>
+        </table>
+}
+else
+{
+        <p>No results found. Redirecting to Google in 5 seconds for "@ViewBag.SearchTerm"...</p>
+
+        <script>
+            setTimeout(function() {
+                var searchTerm = "@ViewBag.SearchTerm";
+                var googleSearchUrl = "https://www.google.com/search?q=" + encodeURIComponent(searchTerm);
+                window.location.href = googleSearchUrl;
+            }, 5000); // 5000 milliseconds = 5 seconds
+        </script>
+}

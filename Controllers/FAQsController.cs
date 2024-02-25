@@ -32,21 +32,25 @@ namespace FAQwebApp.Controllers
 
         // GET: FAQs/ShowSearchForm
         // Akcja zwracająca widok do wyświetlenia formularza wyszukiwania
-        public async Task<IActionResult> ShowSearchForm()
+        public IActionResult ShowSearchSite()
         {
             return View();
         }
 
-        // GET: FAQs/ShowSearchResults
-        // Akcja zwracająca widok z wynikami wyszukiwania
-        public async Task<IActionResult> ShowSearchResults(string SearchPhrase)
+        [HttpPost]
+        public IActionResult ShowSearchResults(string searchTerm)
         {
-            return View("Index", await _context.FAQ.Where(j => j.Question.Contains(SearchPhrase)).ToListAsync());
+            // Tutaj dokonaj wyszukiwania w bazie danych
+            var searchResults = _context.FAQ
+                .Where(f => f.Question.Contains(searchTerm) || f.Answer.Contains(searchTerm))
+                .ToList();
+
+            ViewBag.SearchTerm = searchTerm; // Przekazanie wartości do ViewBag
+            return View(searchResults); // Przekazanie wyników wyszukiwania do widoku
         }
 
-        // GET: FAQs/Details/5
-        // Akcja zwracająca widok z danymi szczegółowymi dla konkretnego FAQ
         [Authorize]
+
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)

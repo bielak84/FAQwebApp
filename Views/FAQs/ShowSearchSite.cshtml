@@ -1,0 +1,10 @@
+﻿@{
+    ViewData["Title"] = "Search FAQs";
+}
+
+<h2>Search FAQs</h2>
+
+<form asp-controller="FAQ" asp-action="ShowSearchResults" method="post">
+    <input type="text" name="searchTerm" />
+    <button type="submit">Search</button>
+</form>
