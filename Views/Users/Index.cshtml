@@ -1,5 +1,4 @@
 ﻿<!-- Views/Users/Index.cshtml -->
-@model List<Microsoft.AspNetCore.Identity.IdentityUser>
 
 @{
     ViewData["Title"] = "Lista Użytkowników";
@@ -13,15 +12,23 @@
             <th>Id</th>
             <th>Username</th>
             <th>Email</th>
+            <th>Is Email Confirmed</th>
+            <th>Actions</th>
         </tr>
     </thead>
     <tbody>
-        @foreach (var user in Model)
+        @foreach (var userViewModel in Model)
         {
             <tr>
-                <td>@user.Id</td>
-                <td>@user.UserName</td>
-                <td>@user.Email</td>
+                <td>@userViewModel.User.Id</td>
+                <td>@userViewModel.User.UserName</td>
+                <td>@userViewModel.User.Email</td>
+                <td>@(userViewModel.IsEmailConfirmed ? "Yes" : "No")</td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@userViewModel.User.Id">Edit</a> |
+                    <!--<a asp-action="Details" asp-route-id="@userViewModel.User.Id">Details</a>-->
+                    <a asp-action="Delete" asp-route-id="@userViewModel.User.Id">Delete</a>
+                </td>
             </tr>
         }
     </tbody>

@@ -50,8 +50,8 @@ app.MapControllerRoute(
 
 app.MapControllerRoute(
     name: "Users",
-    pattern: "Users/Index",
-    defaults: new { controller = "Users", action = "Index" });
+    pattern: "Users/{action=Index}/{id?}",
+    defaults: new { controller = "Users" });
 
 // ...
 

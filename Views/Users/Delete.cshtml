@@ -1,0 +1,16 @@
+﻿<!-- Views/Users/Delete.cshtml -->
+@model Microsoft.AspNetCore.Identity.IdentityUser
+
+@{
+    ViewData["Title"] = "Usuń Użytkownika";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<p>Czy na pewno chcesz usunąć użytkownika o nazwie: <strong>@Model.UserName</strong>?</p>
+
+<form asp-action="Delete" method="post">
+    <input type="hidden" asp-for="Id" />
+    <button type="submit" class="btn btn-danger">Usuń</button>
+    <a asp-action="Index" class="btn btn-secondary">Anuluj</a>
+</form>
