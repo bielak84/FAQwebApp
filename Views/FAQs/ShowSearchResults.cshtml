@@ -4,15 +4,15 @@
     ViewData["Title"] = "Search Results";
 }
 
-<h2>Search Results</h2>
+<h2>Wyniki</h2>
 
 @if (Model != null && Model.Any())
 {
         <table>
             <thead>
                 <tr>
-                    <th>Question</th>
-                    <th>Answer</th>
+                    <th>Pytanie</th>
+                    <th>Odpowiedź</th>
                 </tr>
             </thead>
             <tbody>
@@ -28,13 +28,14 @@
 }
 else
 {
-        <p>No results found. Redirecting to Google in 5 seconds for "@ViewBag.SearchTerm"...</p>
+        <p>Nie znaleziono wyników dla "@ViewBag.SearchTerm". Przekierowanie zapytania do Google, poczekaj 5 sekund...</p>
 
         <script>
             setTimeout(function() {
                 var searchTerm = "@ViewBag.SearchTerm";
                 var googleSearchUrl = "https://www.google.com/search?q=" + encodeURIComponent(searchTerm);
-                window.location.href = googleSearchUrl;
-            }, 5000); // 5000 milliseconds = 5 seconds
+                window.open(googleSearchUrl, '_blank');
+                window.location.href = "https://localhost:7287";
+             }, 5000); // 5000 milliseconds = 5 seconds
         </script>
 }
