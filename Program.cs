@@ -45,6 +45,17 @@ app.MapControllerRoute(
     pattern: "FAQs/RandomQuestion",
     defaults: new { controller = "FAQsRandom", action = "RandomQuestion" });
 
+// Program.cs
+// ...
+
+app.MapControllerRoute(
+    name: "Users",
+    pattern: "Users/Index",
+    defaults: new { controller = "Users", action = "Index" });
+
+// ...
+
+
 // Dodawanie trasowania do akcji ShowSearchSite
 app.MapControllerRoute(
     name: "ShowSearchSite",
